@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+<%# NAVBAR %>
+    <% if session[:user_id] != nil %>
+      <div class="topnav"> 
+        <a href="/users/home">HOME</a>
+        <div id="profile"><a href='/sessions/logout'>SIGNOUT</a></div>
+        <div id="profile"><a href='/users/home'>WELCOME, <%=@user.name.upcase%>!</a></div>
+      </div>
+    <% else %>
+      <div class="topnav"> 
+        <div><a href="/home">HOME</a></div>
+        <div><a href="/registrations/signup">SIGNUP</a></div>
+        <div><a href="/sessions/login">LOGIN</a></div>
+      </div>
+    <% end %>
+
+<%# HEADING %>
+    <div class="header">
+      <h1> H E A D I N G</h1>
+    </div>
+
+<%# CONTENT %>
+    <%=yield%>
+
+<%# FOOTER %>
+    <div class='footer'>
+      <a href="https://yourwebsite.com">© COPYRIGHT 2019 | YOURWEBSITE.COM</a>
+    </div>
+
+  </body>
+</html>
