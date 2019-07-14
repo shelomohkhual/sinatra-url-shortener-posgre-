@@ -9,12 +9,13 @@
     <% if session[:user_id] != nil %>
       <div class="topnav"> 
         <a href="/users/home">HOME</a>
+        <a href='/users/my_urls'>MY_URLS</a>
         <div id="profile"><a href='/sessions/logout'>SIGNOUT</a></div>
         <div id="profile"><a href='/users/home'>WELCOME, <%=@user.name.upcase%>!</a></div>
       </div>
     <% else %>
       <div class="topnav"> 
-        <div><a href="/home">HOME</a></div>
+        <div><a href="/">HOME</a></div>
         <div><a href="/registrations/signup">SIGNUP</a></div>
         <div><a href="/sessions/login">LOGIN</a></div>
       </div>

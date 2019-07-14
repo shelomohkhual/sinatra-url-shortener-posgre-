@@ -10,6 +10,7 @@ gem 'pg'
 gem 'shotgun'
 gem 'byebug'
 gem 'bcrypt'
+gem 'irb'
 
 group :test do
   gem 'launchy'
