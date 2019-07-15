@@ -15,3 +15,4 @@ production:
   database: db/user_authproduction
   pool: 5
   timeout: 5000
+  url: <%=ENV['DATEBASE_URL']%>

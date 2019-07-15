@@ -27,7 +27,7 @@
           <% if @urls_count > 5 %>
             <%5.times do |n| %>
                           <div style="text-align:center;">
-                          <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank">127.0.0.1:9393<%=@urls.all[@urls_count-(n+1)].short_url%></a>
+                          <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank"><%=ENV['BASE_URL']@urls.all[@urls_count-(n+1)].short_url%></a>
                           <br>
                           <%=@urls.all[@urls_count-(n+1)].ori_url %>
                           <br>
@@ -38,7 +38,7 @@
           <%else %>
             <%@urls_count.times do |n| %>
                         <div style="text-align:center;">
-                        <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank">127.0.0.1:9393<%=@urls.all[@urls_count-(n+1)].short_url%></a>
+                        <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank"><%=ENV['BASE_URL']@urls.all[@urls_count-(n+1)].short_url%></a>
                         <br>
                         <%=@urls.all[@urls_count-(n+1)].ori_url %>
                         <br>
@@ -51,3 +51,5 @@
     </div>
 </div>
  
+
+ <%# <%= ENV['BASE_URL'] %>
