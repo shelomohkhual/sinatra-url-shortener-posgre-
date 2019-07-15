@@ -8,36 +8,46 @@
     </div>
 
     <div class="column" style="text-align:center; margin: 20px auto;">
-      <% if @return_url || @new_url != nil %>
-          <a href="/<%= @return_url.short_url || @new_url.short_url%>" target="_blank"><%=@return_url.short_url ||@new_url.short_url%></a>
+      <% if @return_url != nil %>
+      <%# <% byebug %>
+          <a href="/<%= @return_url.short_url%>" target="_blank"><%=@return_url.short_url%></a>
         <br>
-          <%=p @return_url.ori_url || @new_url.ori_url %>
+          <%=p @return_url.ori_url %>
         <% else %>
           <h4 style="text-align:center;"> Do SOMETHING!<h4>
         <% end %>
     </div>
-    
+    <%# <%byebug %> 
     <div class="column">
-        <% if @urls == nil%>
+        <% if @urls.empty?%>
           <h4 style="text-align:center;">You are the first one to Conquer the World!<h4>
         <% else %>
           <h3>Lastest Shorten Urls</h3>
           <hr>
-          <% @urls_count.times do |n| %>
-                      <% count = 0 %>
-                      <div style="text-align:center;">
-                      <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank"><%=@urls.all[@urls_count-(n+1)].short_url%></a>
-                      <br>
-                      <%=@urls.all[@urls_count-(n+1)].ori_url %>
-                      <br>
-                      <p><%=@urls.all[@urls_count-(n+1)].track%> visited this link</p>
-                      <hr>
-
-                      </div>
-                      <% count +=1 %>
-                      <% break if count > 5 %>
-          <% end %>
-        <% end %>
+          <% if @urls_count > 5 %>
+            <%5.times do |n| %>
+                          <div style="text-align:center;">
+                          <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank"><%=@urls.all[@urls_count-(n+1)].short_url%></a>
+                          <br>
+                          <%=@urls.all[@urls_count-(n+1)].ori_url %>
+                          <br>
+                          <p>(<%=@urls.all[@urls_count-(n+1)].freq%>) visited this link</p>
+                          <hr>
+                          </div>
+              <% end %>
+          <%else %>
+            <%@urls_count.times do |n| %>
+                        <div style="text-align:center;">
+                        <a href="/<%=@urls.all[@urls_count-(n+1)].short_url%>" target="_blank"><%=@urls.all[@urls_count-(n+1)].short_url%></a>
+                        <br>
+                        <%=@urls.all[@urls_count-(n+1)].ori_url %>
+                        <br>
+                        <p>(<%=@urls.all[@urls_count-(n+1)].freq%>) visited this link</p>
+                        <hr>
+                        </div>
+            <% end %>
+            <% end %>
+      <% end %>
     </div>
 </div>
  
