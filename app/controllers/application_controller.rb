@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
          redirect '/'
       else
           given_url=params["ori_url"]
-          byebug
+          # byebug
           given_url.include?("https://"||"http://") ? given_url.sub!(/\A(http[s]?:\/\/)/,"") : nil
           @urls = Url.all
           @urls_count = Url.count
