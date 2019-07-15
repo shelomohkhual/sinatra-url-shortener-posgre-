@@ -49,7 +49,7 @@ class ApplicationController < Sinatra::Base
                 base58 =["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
                 new_s_url = base58.sample(4)
                 all_short_url=Url.all.pluck(:short_url)
-                new_url = Url.create(user_id: @user.id, user_name:@user.name)
+                new_url = Url.create(user_id: @user.id, user_name:@user.name, freq: 0)
                 if !all_short_url.include? (params["short_url"])
                     new_url.short_url = new_s_url.join
                 else 
@@ -60,7 +60,7 @@ class ApplicationController < Sinatra::Base
                     new_url.short_url = new_s_url.join
                 end
                 new_url.ori_url = given_url
-                new_url.freq = 0
+                # new_url.freq = 0
                 new_url.save
                 # $message << "url_created"
               end
@@ -94,8 +94,7 @@ class ApplicationController < Sinatra::Base
       redirect '/'
     else
       add_track = Url.all.find_by(short_url: params[:short_url])
-      add_track.freq
-      add_track.freq = (add_track.freq) + 1
+      add_track.freq += 1
       add_track.save
       redirect "https://#{add_track.ori_url}"
     end

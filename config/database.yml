@@ -4,12 +4,6 @@ development:
   pool: 5
   timeout: 5000
 
-test:
-  adapter: postgresql
-  database: user_authtest
-  pool: 5
-  timeout: 5000
-
 production:
   adapter: postgresql
   database: user_authproduction
