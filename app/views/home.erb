@@ -10,7 +10,7 @@
     <div class="column" style="text-align:center; margin: 20px auto;">
       <% if @return_url != nil %>
       <%# <% byebug %>
-          <a href="/<%= @return_url.short_url%>" target="_blank"><%=@return_url.short_url%></a>
+          <a href="/<%= @return_url.short_url%>" target="_blank"><%=ENV["BASE_URL"]%><%=@return_url.short_url%></a>
         <br>
           <%=p @return_url.ori_url %>
         <% else %>
