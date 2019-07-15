@@ -6,7 +6,9 @@
         <% if @my_urls.count != 0 %>
             <%@my_urls.each_with_index do |url,index| %>
                 <%=index+1%>
-                <a href='/<%=url.short_url%>'><%=ENV['BASE_URL']url.short_url%>|<%url.ori_url%></a><br>
+                <a href='/<%=url.short_url%>'>. <%=ENV["BASE_URL"]%><%=url.short_url%></a><br>
+                <%=url.ori_url%>
+                
                 <p>(<%=url.freq%>) visited this link</p>
                 <hr>
             <%end %>
